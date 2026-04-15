@@ -42,17 +42,3 @@
   }
 }
 
-.bottom-fixed-ad {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 40;
-  background-color: #fff;
-  border-top: 1px solid #f2f4f6;
-}
-
-/* 하단 배너로 인해 푸터가 가려지지 않도록 여백 추가 */
-.app-container {
-  padding-bottom: 60px;
-}
