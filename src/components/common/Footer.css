@@ -1,0 +1,61 @@
+.app-footer {
+  padding: 40px 20px;
+  background-color: var(--toss-grey-50);
+  border-top: 1px solid var(--toss-grey-100);
+  margin-top: 40px;
+}
+
+.footer-content {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.license-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.license-image {
+  width: 120px;
+  height: auto;
+  opacity: 0.8;
+}
+
+.license-text {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--toss-grey-600);
+  word-break: keep-all;
+}
+
+.license-text strong {
+  color: var(--toss-grey-800);
+  font-weight: 600;
+}
+
+.license-text a {
+  color: var(--toss-blue);
+  text-decoration: none;
+}
+
+.license-text a:hover {
+  text-decoration: underline;
+}
+
+.footer-notice {
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--toss-grey-500);
+  border-top: 1px solid var(--toss-grey-200);
+  padding-top: 16px;
+}
+
+.copyright {
+  margin-top: 8px;
+  font-weight: 500;
+  color: var(--toss-grey-400);
+}

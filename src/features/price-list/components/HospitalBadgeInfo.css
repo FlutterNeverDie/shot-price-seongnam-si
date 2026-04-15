@@ -1,0 +1,46 @@
+.hospital-badge-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.badge-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background-color: #f2f4f6;
+  border-radius: 10px;
+  transition: background-color 0.2s;
+}
+
+.badge-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #8b95a1; /* Toss Grey 500 */
+}
+
+.badge-label::after {
+  content: "·";
+  margin-left: 6px;
+}
+
+.badge-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4e5968; /* Toss Grey 700 */
+}
+
+/* 병원 종류 강조 스타일 */
+.clcd-badge {
+  background-color: #e8f3ff;
+}
+
+.clcd-badge .badge-label {
+  color: #3182f6;
+}
+
+.clcd-badge .badge-value {
+  color: #3182f6;
+}

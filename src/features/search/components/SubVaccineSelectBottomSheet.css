@@ -1,0 +1,90 @@
+.sub-vaccine-container {
+  padding: 8px 0 24px 0;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.sub-loading, .sub-empty {
+  padding: 40px;
+  text-align: center;
+  color: var(--toss-grey-500);
+  font-size: 15px;
+}
+
+.sub-guide-text {
+  font-size: 13px;
+  color: var(--toss-grey-500);
+  margin-bottom: 16px;
+  padding: 0 4px;
+}
+
+.sub-item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sub-item-button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 14px 16px;
+  background-color: var(--toss-grey-50);
+  border-radius: 12px;
+  border: 1px solid transparent;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.sub-item-button:hover {
+  background-color: var(--toss-grey-100);
+}
+
+.sub-item-button.active {
+  background-color: rgba(49, 130, 246, 0.08);
+  border-color: var(--toss-blue);
+}
+
+.sub-item-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--toss-grey-900);
+  margin-bottom: 2px;
+  line-height: 1.4;
+}
+
+.sub-item-code {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--toss-blue);
+  background-color: white;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+/* VaccineTabs 추가 스타일 */
+.sub-selected-badge {
+  font-size: 10px;
+  background-color: var(--toss-blue);
+  color: white;
+  padding: 1px 4px;
+  border-radius: 4px;
+  margin-left: 4px;
+}
+
+.selected-sub-info {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background-color: var(--toss-grey-50);
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--toss-grey-600);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.selected-sub-info .sub-name {
+  color: var(--toss-blue);
+  font-weight: 700;
+}

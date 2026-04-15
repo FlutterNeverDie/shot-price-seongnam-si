@@ -1,0 +1,105 @@
+.price-card-container {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hospital-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.hospital-main {
+  flex: 1;
+  min-width: 0; /* 말줄임표 작동을 위해 필수 */
+}
+
+.hospital-badge-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.rank-badge {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: white;
+}
+
+.rank-1 { background-color: #ffb800; }
+.rank-2 { background-color: #abb3bb; }
+.rank-3 { background-color: #d1a47b; }
+
+.category-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 6px;
+  background-color: var(--toss-grey-100);
+  color: var(--toss-grey-600);
+  border-radius: 4px;
+}
+
+.hospital-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--toss-grey-900);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.price-info {
+  text-align: right;
+  color: var(--toss-blue);
+}
+
+.price-value {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.price-unit {
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 2px;
+}
+
+.address-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--toss-grey-500);
+}
+
+.address-text {
+  font-size: 13px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid var(--toss-grey-50);
+}
+
+.update-date {
+  font-size: 11px;
+  color: var(--toss-grey-400);
+}
+
+.btn-detail {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--toss-blue);
+}

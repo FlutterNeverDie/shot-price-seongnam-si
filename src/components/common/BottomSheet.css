@@ -1,0 +1,58 @@
+.bottom-sheet-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+.bottom-sheet-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+  max-width: 600px;
+  background-color: var(--bg-white);
+  border-top-left-radius: var(--radius-xl);
+  border-top-right-radius: var(--radius-xl);
+  z-index: 1001;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+  will-change: transform;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.bottom-sheet-header {
+  padding: 12px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottom-sheet-handle {
+  width: 48px;
+  height: 5px;
+  background-color: var(--toss-grey-100);
+  border-radius: 3px;
+  margin-bottom: 24px;
+}
+
+.bottom-sheet-title {
+  width: 100%;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--toss-grey-900);
+  text-align: left;
+  letter-spacing: -0.5px;
+}
+
+.bottom-sheet-content {
+  overflow-y: auto;
+  padding: 0 24px 24px;
+  flex: 1;
+}

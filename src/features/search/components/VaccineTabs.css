@@ -1,0 +1,38 @@
+.vaccine-tabs-container {
+  width: 100%;
+  background-color: var(--bg-white);
+  border-bottom: 1px solid var(--toss-grey-50);
+  position: sticky;
+  top: 74px; /* Height of SearchHeader approx */
+  z-index: 90;
+}
+
+.vaccine-tabs-scroll {
+  display: flex;
+  overflow-x: auto;
+  padding: 8px 16px;
+  gap: 4px;
+  scrollbar-width: none;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.vaccine-tabs-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.vaccine-tab-item {
+  padding: 10px 18px;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--toss-grey-500);
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.vaccine-tab-item.active {
+  background-color: var(--toss-blue-light);
+  color: var(--toss-blue);
+  font-weight: 700;
+}

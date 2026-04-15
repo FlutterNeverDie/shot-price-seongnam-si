@@ -1,0 +1,121 @@
+:root {
+  /* Toss Design System Colors - Premium Palette */
+  --toss-blue: #3182f6;
+  --toss-blue-light: #e8f3ff;
+  --toss-blue-hover: #1b64da;
+  
+  --toss-grey-50: #f2f4f6;
+  --toss-grey-100: #e5e8eb;
+  --toss-grey-200: #d1d6db;
+  --toss-grey-300: #b0b8c1;
+  --toss-grey-400: #8b95a1;
+  --toss-grey-500: #6b7684;
+  --toss-grey-600: #4e5968;
+  --toss-grey-700: #333d4b;
+  --toss-grey-800: #191f28;
+  --toss-grey-900: #020303;
+  
+  --toss-green: #00d082;
+  --toss-green-light: #e6f9f2;
+  --toss-red: #f04452;
+  
+  /* Backgrounds */
+  --bg-white: #ffffff;
+  --bg-grey: #f2f4f6; /* Toss standard light grey bg */
+  --bg-glass: rgba(255, 255, 255, 0.75);
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  
+  /* Border Radius */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 26px;
+
+  /* Shadows - Subtle & Premium */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  background-color: var(--bg-grey);
+  color: var(--toss-grey-800);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--toss-grey-800);
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glassmorphism Effect */
+.glass-effect {
+  background-color: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Premium Card Style */
+.premium-card {
+  background-color: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.premium-card:active {
+  transform: scale(0.98);
+}
+
+/* Common Button Styles */
+.toss-btn-primary {
+  background-color: var(--toss-blue);
+  color: white;
+  padding: 14px 24px;
+  border-radius : var(--radius-md);
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.toss-btn-primary:hover {
+  background-color: var(--toss-blue-hover);
+}
+
+.toss-btn-primary:active {
+  transform: scale(0.96);
+}

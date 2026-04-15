@@ -1,0 +1,59 @@
+.region-select-container {
+  display: flex;
+  height: 50vh;
+  margin: 0 -24px; /* 메인 컨텐츠 영역 패딩 상쇄 */
+  background-color: var(--bg-white);
+}
+
+.region-column {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+}
+
+.sido-column {
+  flex: 0.4; /* 좌측은 조금 좁게 설정 */
+  background-color: var(--toss-grey-50);
+}
+
+.sgg-column {
+  flex: 0.6;
+  padding: 8px 12px; /* 우측 리스트에 여유 공간 부여 */
+}
+
+.region-item {
+  padding: 14px 20px;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--toss-grey-600);
+  width: 100%;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.sido-column .region-item {
+  border-radius: 0; /* 시도 선택은 바 상태 유지 */
+}
+
+.region-item.active {
+  background-color: var(--bg-white);
+  color: var(--toss-blue);
+  font-weight: 700;
+}
+
+.sgg-column .region-item {
+  margin-bottom: 2px;
+}
+
+.region-item.selected {
+  background-color: var(--toss-blue-light);
+  color: var(--toss-blue);
+  font-weight: 700;
+}
+
+.region-item:active {
+  background-color: var(--toss-grey-100);
+}
