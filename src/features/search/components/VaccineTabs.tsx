@@ -1,7 +1,5 @@
 import React from 'react';
 import { usePriceStore } from '../../../store/usePriceStore';
-import { useTossAds } from '../../ads/hooks/useTossAds';
-import { useAdFrequency } from '../../ads/hooks/useAdFrequency';
 import './VaccineTabs.css';
 
 const VACCINES = [
@@ -16,10 +14,7 @@ const VACCINES = [
 
 export const VaccineTabs: React.FC = () => {
   const { selectedVaccine, setSelectedVaccine } = usePriceStore();
-  const { showRewardAd } = useTossAds();
-  const { incrementSearchAndCheck } = useAdFrequency();
 
-  // 초기값 설정
   React.useEffect(() => {
     if (!selectedVaccine) {
       setSelectedVaccine(VACCINES[0]);
@@ -28,13 +23,7 @@ export const VaccineTabs: React.FC = () => {
 
   const handleTabClick = (vaccine: typeof VACCINES[0]) => {
     if (selectedVaccine?.id === vaccine.id) return;
-    
     setSelectedVaccine(vaccine);
-    
-    // 탭 변경 시에도 5회당 한 번 리워드 광고 노출
-    if (incrementSearchAndCheck()) {
-      showRewardAd();
-    }
   };
 
   return (

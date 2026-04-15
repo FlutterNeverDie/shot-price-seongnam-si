@@ -1,21 +1,21 @@
 import { create } from 'zustand';
-import type { VaccineItem, RegionState } from '../types';
+import type { VaccineItem } from '../types';
 import type { NpayCodeItem } from '../api/hiraDto';
 
+export const SEONGNAM_REGION = {
+  sidoCode: '41',
+  sidoName: '경기도',
+  sggCode: '41130',
+  sggName: '성남시',
+} as const;
+
 interface PriceStore {
-  // 백신 설정
   selectedVaccine: VaccineItem | null;
   setSelectedVaccine: (vaccine: VaccineItem | null) => void;
 
-  // 세부 백신 설정
   selectedSubVaccine: NpayCodeItem | null;
   setSelectedSubVaccine: (subVaccine: NpayCodeItem | null) => void;
 
-  // 지역 설정
-  selectedRegion: RegionState | null;
-  setSelectedRegion: (region: RegionState | null) => void;
-
-  // 검색 상태
   isSearching: boolean;
   setIsSearching: (searching: boolean) => void;
 }
@@ -26,9 +26,6 @@ export const usePriceStore = create<PriceStore>((set) => ({
 
   selectedSubVaccine: null,
   setSelectedSubVaccine: (subVaccine) => set({ selectedSubVaccine: subVaccine }),
-
-  selectedRegion: null,
-  setSelectedRegion: (region) => set({ selectedRegion: region }),
 
   isSearching: false,
   setIsSearching: (searching: boolean) => set({ isSearching: searching }),
