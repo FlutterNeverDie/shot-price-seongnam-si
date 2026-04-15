@@ -2,12 +2,12 @@ import { create } from 'zustand';
 import type { VaccineItem } from '../types';
 import type { NpayCodeItem } from '../api/hiraDto';
 
-export const SEONGNAM_REGION = {
-  sidoCode: '41',
-  sidoName: '경기도',
-  sggCode: '41130',
-  sggName: '성남시',
-} as const;
+// HIRA API 자체 코드 기준 (표준 행정코드와 다름)
+export const SEONGNAM_DISTRICTS = [
+  { sidoCode: '31', sggCode: '310401', name: '수정구' },
+  { sidoCode: '31', sggCode: '310402', name: '중원구' },
+  { sidoCode: '31', sggCode: '310403', name: '분당구' },
+] as const;
 
 interface PriceStore {
   selectedVaccine: VaccineItem | null;

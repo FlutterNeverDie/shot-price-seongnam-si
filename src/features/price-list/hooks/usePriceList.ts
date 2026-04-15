@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { usePriceStore, SEONGNAM_REGION } from '../../../store/usePriceStore';
+import { usePriceStore, SEONGNAM_DISTRICTS } from '../../../store/usePriceStore';
 import type { HospitalPriceInfo } from '../../../types';
 import { hiraApi } from '../../../api/hiraApi';
 
@@ -44,16 +44,22 @@ export function usePriceList() {
         for (const code of targetCodes) {
           if (!isMounted) break;
 
-          const batch = await hiraApi.fetchHospitalPricesByCode(
-            SERVICE_KEY,
-            code,
-            SEONGNAM_REGION.sidoCode,
-            SEONGNAM_REGION.sggCode,
-            selectedVaccine.name
+          // 성남시 3개 구(수정구, 중원구, 분당구) 병렬 조회
+          const batches = await Promise.all(
+            SEONGNAM_DISTRICTS.map(district =>
+              hiraApi.fetchHospitalPricesByCode(
+                SERVICE_KEY,
+                code,
+                district.sidoCode,
+                district.sggCode,
+                selectedVaccine.name
+              )
+            )
           );
 
-          if (batch.length > 0 && isMounted) {
-            batch.forEach(item => {
+          const combined = batches.flat();
+          if (combined.length > 0 && isMounted) {
+            combined.forEach(item => {
               const key = `${item.ykiho}-${item.category}`;
               if (!uniqueItems.has(key)) {
                 uniqueItems.set(key, item);

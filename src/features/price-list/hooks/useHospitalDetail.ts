@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { HospitalPriceInfo } from '../../../types';
 import { hiraApi } from '../../../api/hiraApi';
-import { SEONGNAM_REGION } from '../../../store/usePriceStore';
+import { SEONGNAM_DISTRICTS } from '../../../store/usePriceStore';
 
 const SERVICE_KEY = import.meta.env.VITE_HIRA_SERVICE_KEY as string;
 
@@ -20,8 +20,8 @@ export function useHospitalDetail(initialHospital: HospitalPriceInfo, isOpen: bo
             SERVICE_KEY,
             initialHospital.ykiho,
             initialHospital.hospitalName,
-            SEONGNAM_REGION.sidoCode,
-            SEONGNAM_REGION.sggCode
+            SEONGNAM_DISTRICTS[0].sidoCode,
+            undefined  // 병원 기본정보는 시도코드만으로 조회
           );
 
           if (basis) {
