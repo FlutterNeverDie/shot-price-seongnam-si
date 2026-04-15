@@ -130,13 +130,14 @@
   color: var(--toss-grey-800);
 }
 
-/* 지역 미선택 빈 화면 스타일 */
+/* 검색 결과 없음 / 에러 빈 화면 스타일 */
 .price-list-status.empty-state {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 60px 24px;
+  padding: 0 24px;
   background-color: transparent;
 }
 
@@ -164,26 +165,6 @@
   margin-bottom: 24px;
 }
 
-.btn-select-region {
-  padding: 12px 24px;
-  background-color: #3182f6;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s, background-color 0.2s;
-  box-shadow: 0 4px 12px rgba(49, 130, 246, 0.2);
-}
-
-.btn-select-region:hover {
-  background-color: #1b64da;
-}
-
-.btn-select-region:active {
-  transform: scale(0.97);
-}
 
 .empty-icon {
   font-size: 40px;
@@ -197,6 +178,3 @@
   60% {transform: translateY(-5px);}
 }
 
-.list-inline-ad {
-  margin-bottom: 12px;
-}

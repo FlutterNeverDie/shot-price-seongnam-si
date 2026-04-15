@@ -40,7 +40,7 @@ export const PriceList: React.FC = () => {
             <MapPin size={32} fill="#3182f6" stroke="white" />
           </div>
         </div>
-        <p className="empty-main-text">성남시에 해당 항목의<br />검색 결과가 없습니다.</p>
+        <p className="empty-main-text"><br />검색 결과가 없습니다.</p>
       </div>
     );
   }
