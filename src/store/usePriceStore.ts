@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 import type { VaccineItem } from '../types';
 import type { NpayCodeItem } from '../api/hiraDto';
 
@@ -9,9 +10,18 @@ export const SEONGNAM_DISTRICTS = [
   { sidoCode: '31', sggCode: '310403', name: '분당구' },
 ] as const;
 
+export interface District {
+  sidoCode: string;
+  sggCode: string;
+  name: string;
+}
+
 interface PriceStore {
   selectedVaccine: VaccineItem | null;
   setSelectedVaccine: (vaccine: VaccineItem | null) => void;
+
+  selectedDistrict: District | null; // null 이면 '전체'
+  setSelectedDistrict: (district: District | null) => void;
 
   selectedSubVaccine: NpayCodeItem | null;
   setSelectedSubVaccine: (subVaccine: NpayCodeItem | null) => void;
@@ -20,13 +30,24 @@ interface PriceStore {
   setIsSearching: (searching: boolean) => void;
 }
 
-export const usePriceStore = create<PriceStore>((set) => ({
-  selectedVaccine: null,
-  setSelectedVaccine: (vaccine) => set({ selectedVaccine: vaccine }),
+export const usePriceStore = create<PriceStore>()(
+  persist(
+    (set) => ({
+      selectedVaccine: null,
+      setSelectedVaccine: (vaccine) => set({ selectedVaccine: vaccine }),
 
-  selectedSubVaccine: null,
-  setSelectedSubVaccine: (subVaccine) => set({ selectedSubVaccine: subVaccine }),
+      selectedDistrict: null,
+      setSelectedDistrict: (district) => set({ selectedDistrict: district }),
 
-  isSearching: false,
-  setIsSearching: (searching: boolean) => set({ isSearching: searching }),
-}));
+      selectedSubVaccine: null,
+      setSelectedSubVaccine: (subVaccine) => set({ selectedSubVaccine: subVaccine }),
+
+      isSearching: false,
+      setIsSearching: (searching: boolean) => set({ isSearching: searching }),
+    }),
+    {
+      name: 'price-store-storage',
+      partialize: (state) => ({ selectedDistrict: state.selectedDistrict }),
+    }
+  )
+);

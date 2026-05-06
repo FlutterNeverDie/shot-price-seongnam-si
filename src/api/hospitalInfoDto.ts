@@ -20,6 +20,7 @@ export interface HospitalInfoResponse<T> {
 
 export interface HospitalBasisRequest {
   serviceKey: string;
+  ykiho?: string;
   pageNo?: string;
   numOfRows?: string;
   sidoCd?: string;

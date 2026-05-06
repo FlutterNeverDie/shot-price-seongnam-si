@@ -9,10 +9,16 @@ export const hiraApi = {
   /**
    * [1단계] 로컬 CSV에서 키워드에 해당하는 비급여 코드 목록을 추출합니다.
    */
+  _csvCache: null as string | null,
   fetchCodesForKeyword: async (keyword: string, tabName: string): Promise<string[]> => {
     try {
-      const csvRes = await fetch('/vaccine_codes.csv');
-      const csvText = await csvRes.text();
+      let csvText = hiraApi._csvCache;
+      if (!csvText) {
+        const csvRes = await fetch('/vaccine_codes.csv');
+        csvText = await csvRes.text();
+        hiraApi._csvCache = csvText;
+      }
+      
       const rows = csvText.split('\n').filter(r => r.trim() !== '');
       const headers = rows[0].split(',');
       
@@ -99,22 +105,20 @@ export const hiraApi = {
 
     try {
       // 1. 가격 상세와 병원 기본 정보를 병렬로 호출하여 속도 향상
+      // ykiho가 있으면 ykiho를 우선 사용
       const [items, basisArray] = await Promise.all([
         hiraRepository.getNonPaymentItemHospDtlList({
           ykiho: ykiho,
-          yadmNm: hospitalName,
           npayCd: npayCd,
         }),
-        hospitalInfoRepository.getHospBasisList({ yadmNm: hospitalName })
+        hospitalInfoRepository.getHospBasisList({ ykiho: ykiho })
       ]);
 
       const basis = basisArray.find(item => item.ykiho === ykiho) || basisArray[0];
-
-      // 해당 병원(ykiho)의 데이터만 필터링 (명시적으로 한번 더 확인)
       const target = items.find(item => item.ykiho === ykiho) || items[0];
+      
       if (!target && !basis) return null;
 
-      // 만약 상세 가격 정보(target)가 없더라도 기본 정보(basis)가 있다면 결합하여 반환
       return {
         ykiho: ykiho,
         hospitalName: target?.yadmNm || basis?.yadmNm || hospitalName,
@@ -140,18 +144,14 @@ export const hiraApi = {
   /**
    * 병원 기본 정보 조회 (단순 주소/전화번호용)
    */
-  fetchHospitalBasis: async (serviceKey: string, ykiho: string, hospitalName: string, sidoCd?: string, sgguCd?: string) => {
+  fetchHospitalBasis: async (serviceKey: string, ykiho: string, hospitalName: string) => {
     const repository = new HospitalInfoRepository(serviceKey);
-    // 2자리 시도코드 지원 (API 사양에 따라 6자리로 변경)
-    const fullSidoCd = sidoCd && sidoCd.length === 2 ? `${sidoCd}0000` : sidoCd;
-
-    // yadmNm, sidoCd, sgguCd를 조합하여 1차 목록을 가져옵니다.
+    
+    // ykiho를 직접 사용하여 고유 병원을 즉시 찾습니다. (속도 향상의 핵심)
     const items = await repository.getHospBasisList({ 
-      yadmNm: hospitalName,
-      sidoCd: fullSidoCd,
-      sgguCd: sgguCd
+      ykiho: ykiho 
     });
-    // 가져온 목록 중 해당 병원의 고유 기호(ykiho)와 일치하는 것을 찾습니다. 
+    
     return items.find(item => item.ykiho === ykiho) || items[0] || null;
   }
 };

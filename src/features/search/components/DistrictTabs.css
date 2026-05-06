@@ -1,0 +1,40 @@
+.district-tabs-container {
+  padding: 8px 16px;
+  background-color: var(--background-color, #ffffff);
+  border-bottom: 1px solid #f2f4f6;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.district-tabs-container::-webkit-scrollbar {
+  display: none;
+}
+
+.district-tabs-list {
+  display: flex;
+  gap: 8px;
+}
+
+.district-tab-item {
+  padding: 6px 14px;
+  border-radius: 18px;
+  background-color: #f2f4f6;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4e5968;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.district-tab-item:hover {
+  background-color: #e5e8eb;
+}
+
+.district-tab-item.active {
+  background-color: #3182f6;
+  color: #ffffff;
+  font-weight: 600;
+}
